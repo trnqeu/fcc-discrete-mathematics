@@ -1,9 +1,28 @@
 from itertools import permutations
 from math import factorial
+from collections import defaultdict
+
+def how_many_permutations(text: str) -> int:
+    letters = dict()
+    for letter in text:
+        letters[letter] +=1
+
+    numerator = factorial(len(text))
+    factors = [factorial(count) for count in letters.values()]
+    denominator = 1
+    for factor in factors:
+        denominator *= factor
+    return numerator // denominator
 
 
-perms = {''.join(x) for x in list(permutations("barbarian"))}
-print(perms)
-print(len(perms))
+# perms = {''.join(x) for x in list(permutations("barbarian"))}
+# print(perms)
+# print(len(perms))
 
-print(factorial(9))
+# print(factorial(9))
+
+print(how_many_permutations('zuzzurrellone'))
+
+
+
+
